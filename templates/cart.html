@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div style="background-color: green;" id="banner-adv" class="banner-adv">
+        <a href="#"> <span class="text">Get free discount on your first order.</span>
+        </a> <span class="close-banner"></span>
+    </div>
+    
+    <!-- tracking map -->
+    <section class="checkout-page section-padding bg-light-theme">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    <!-- recipt -->
+                    <div class="recipt-sec padding-20">
+                        <div class="recipt-name title u-line full-width mb-xl-20">
+                            <div class="recipt-name-box">
+                                <h5 class="text-light-black fw-600 mb-2">Pharmative</h5>
+                            </div>
+                            <div class="countdown-box">
+                                <div class="time-box"> <span id="mb-hours"></span>
+                                </div>
+                                <div class="time-box"> <span id="mb-minutes"></span>
+                                </div>
+                                <div class="time-box"> <span id="mb-seconds"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-line mb-xl-20">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="recipt-name full-width padding-tb-10 pt-0">
+                                        <h5 class="text-light-black fw-600">Bill To:</h5>
+                                        <span class="text-light-white ">{{request.user.username}}</span>
+                                        <span class="text-light-white ">{{request.user.email}}</span>
+                                        <span class="text-light-white ">{{request.user.address}}</span>
+                                        <span class="text-light-white ">{{request.user.phone}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="recipt-name full-width padding-tb-10 pt-0">
+                                        <h5 class="text-light-black fw-600">Pick up delivery</h5>
+                                        <p class="text-light-white ">customers are to visit the cafiteria to receive thier order</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="ad-banner padding-tb-10 h-100">
+                                        <img src="{% static 'phama/hma.jpg' %}" class="img-fluid full-width" alt="banner-adv">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-line mb-xl-20">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h5 class="text-light-black fw-600 title">Your Order <span><a href="#" class="fs-12">Price</a></span></h5>
+                                    </p>
+                                </div>
+                                <div class="col-lg-12">
+                                    
+                                    {% for food in items %}
+                                    <div class="checkout-product">
+                                        <div class="img-name-value">
+                                            <div style="width: 80px; height: 100px;" class="product-img">
+                                                
+                                                <img style="object-fit: cover; width: 100%; height: 100%;" src="{{food.food.imageURL}}" alt="#">
+                                                
+                                            </div>
+                                            <div class="product-value"> <span class="text-light-white">{{food.quantity}}</span>
+                                                <img style="width: 16px;" data-product ="{{food.food.id}}" data-action="remove" class="update-cart" src="{% static 'down.png' %}" alt="">
+                                                <img style="width: 20px;" data-product ="{{food.food.id}}" data-action="add" class="update-cart" src="{% static 'top.jpg' %}" alt="">
+                                            </div>
+                                            <div class="product-name"> <span><a href="#" class="text-light-white">{{food.food.name}}</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="price"> <span class="text-light-white">GH₵{{food.food.price}}</span>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <form id="order-processing">
+                                
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <div class="payment-method mb-md-40">
+                                        <h5 class="text-light-black fw-600">Payment Method</h5>
+                                        <div class="method-type"> <i class="far fa-credit-card text-dark-white"></i>
+                                            <span class="text-light-white">Credit Card</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="price-table u-line">
+                                        <div class="item"> <span class="text-light-white">Item subtotal:</span>
+                                            <span class="text-light-white">GH₵{{order.get_cart_total}}</span>
+                                        </div>
+                                        <div class="item"> <span class="text-light-white">Tax and fees:</span>
+                                            <span class="text-light-white">GH₵0.00</span>
+                                        </div>
+                                    </div>
+                                    <div class="total-price padding-tb-10">
+                                        <h5 class="title text-light-black fw-700">Total: <span>GH₵{{order.get_cart_total}}</span></h5>
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex"> <button type="submit" class="btn-first white-btn fw-600 help-btn">submit</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <script src="https://js.paystack.co/v1/inline.js"></script>
+
+                        <script>
+                          const paymentForm = document.getElementById("order-processing");
+                          paymentForm.addEventListener("submit", payWithPaystack, false);
+                          function payWithPaystack(e) {
+                            e.preventDefault();
+                      
+                            let total = "{{order.get_cart_total}}";
+                            let email = "{{request.user.email}}";
+                      
+                            let handler = PaystackPop.setup({
+                              key: "pk_test_9d98872ae2ee8caedf67cb718658e0ea8bdd314e", // Replace with your public key
+                              email: email,
+                              amount: parseFloat(total) * 100,
+                              currency: "GHS",
+                              ref: "" + Math.floor(Math.random() * 1000000000 + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+                              // label: "Optional string that replaces customer email"
+                              onClose: function () {
+                                alert("Window closed.");
+                              },
+                              callback: function (response) {
+                                let message = "Payment complete! Reference: " + response.reference;
+                                let shippingInfo = {
+                                  total: total,
+                                };
+                      
+                                let url = "/process-order/";
+                      
+                                fetch(url, {
+                                  method: "POST",
+                                  headers: {
+                                    "Content-Type": "application/json",
+                                    "X-CSRFToken": csrftoken,
+                                  },
+                      
+                                  body: JSON.stringify({ shipping: shippingInfo }),
+                                })
+                                  .then((reponse) => reponse.json())
+                      
+                                  .then((data) => {
+                                    alert("Transaction completed");
+                      
+                                    cart = {};
+                                    document.cookie =
+                                      "cart=" + JSON.stringify(cart) + ";domain=;path=/";
+                                    window.location.href = "{% url 'receipt' order.pk %}";
+                                  });
+                              },
+                            });
+                      
+                            handler.openIframe();
+                          }
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+   {% endblock content %}

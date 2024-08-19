@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+  }
+  .receipt {
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+  }
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .qrcode {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .qrcode img {
+    max-width: 100px;
+  }
+  .details {
+    margin-top: 10px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+  }
+  .item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .logo {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .logo img {
+    max-width: 100px;
+  }
+</style>
+<title>Receipt</title>
+</head>
+<body>
+  <div class="receipt">
+    <div class="logo">
+		<a href="{% url 'food' %}">
+			<div style="font-size: 20px; display: inline-block; font-family: Arial; color: red;" href="{% url 'food' %}">Pharmative<div style="font-size: 20px; display: inline-block; font-family: Arial; color: black;"></div></div>
+		</a>
+		
+    </div>
+    <div class="header">
+      <h1>Receipt</h1>
+      <p>Thank you for your purchase!</p>
+    </div>
+    <div class="qrcode">
+      <img style="width: 20000px; height: 100px; object-fit: cover;" src="{{qr_code.qrcodeURL}}" alt="QR Code">
+    </div>
+    <div class="details">
+      
+      {% for food in qr_code.orderitem_set.all %}
+      <div class="item">
+        <span>{{food.food.name}}</span>
+        <span>${{food.food.price}}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>

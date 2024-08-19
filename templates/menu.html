@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<body>
+    <!-- restaurent address -->
+    <div class="restaurent-address u-line">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="address-details">
+                        <div class="address">
+                            <div class="delivery-address"> <a href="##" class="text-light-black">Working hours (9:10am–5:00pm)</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- restaurent address -->
+    <!-- restaurent meals -->
+    <!-- offer near -->
+</div>
+<section class="browse-cat u-line section-padding">
+    <div class="container">
+      <div style="padding: 10px;" class="row">
+        <div style="padding: 20px;">
+              {% for food in menu_food %}
+              <div style="padding: 5px; width: 310px; margin: 20px; display: inline-block;" class="product-box mb-xl-20">
+                  <div style="width: 300px; height: 170px;" class="product-img">
+                      <a href="##">
+                          <img style="object-fit: cover; height: 100%; width: 100%;"  src="{{food.imageURL}}" class="img-fluid full-width" alt="product-img">
+                      </a>
+                      <div class="overlay">
+                          <div class="product-tags padding-10"> <span class="circle-tag">
+          <img src="{% static 'assets/img/svg/013-heart-1.svg' %}" alt="tag">
+          </span>
+                              <span class="type-tag bg-gradient-green text-custom-white">
+        GH₵{{food.price}}
+          </span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="product-caption">
+                      <div class="title-box">
+                          <h6 class="product-title"><a href="##" class="text-light-black "> {{food.name}}</a></h6>
+                          <div class="tags"> <span class="text-custom-white rectangle-tag bg-green">
+                <div data-product="{{food.id}}" data-action="add"  class="update-cart">AddToCard</div> 
+          </span>
+                          </div>
+                      </div>
+                      <p class="text-light-white">{{food.description}}</p>
+                      <div class="product-details">
+                          <div class="price-time"> <span class="text-light-black time">{{food.time}} min</span>
+                              <!-- <span class="text-light-white price">10 min</span> -->
+                          </div>
+                          <div class="rating"> <span>
+          <i class="fas fa-star text-yellow"></i>
+          <i class="fas fa-star text-yellow"></i>
+          <i class="fas fa-star text-yellow"></i>
+          <i class="fas fa-star text-yellow"></i>
+          <i class="fas fa-star text-yellow"></i>
+          </span>
+                              <span class="text-light-white text-right">4225 ratings</span>
+                          </div>
+                      </div>
+                      <div class="product-footer"> <span class="text-custom-white square-tag">
+          <img src="{%static 'assets/img/svg/005-chef.svg' %}" alt="tag">
+          </span>
+                          <span class="text-custom-white square-tag">
+          <img src="{%static 'assets/img/svg/004-leaf.svg' %}" alt="tag">
+          </span>
+                      </div>
+                  </div>
+              </div>
+              {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section> 
+{% endblock content %}
+   

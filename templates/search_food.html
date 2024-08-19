@@ -1,0 +1,633 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<body class="sidefix">
+    {% if specific_food %}
+    <div class="page-banner p-relative smoothscroll" id="menu">
+        <img src="{{specific_food.imageURL}}" class="img-fluid full-width" alt="banner">
+        <div class="overlay-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="back-btn">
+                            <button type="button" class="text-light-green"> <i class="fas fa-chevron-left"></i>
+              </button>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="tag-share"> <span class="text-light-green share-tag">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <section class="restaurent-details  u-line">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading padding-tb-10">
+                        <h3 class="text-light-black title fw-700 no-margin">Great Burger</h3>
+                        <p class="text-light-black sub-title no-margin">university of energy <span><a href="##" class="text-success">Change locations</a></span>
+                        </p>
+                        <div class="head-rating">
+                            <div class="rating"> <span class="fs-16 text-yellow">
+                  <i class="fas fa-star"></i>
+                </span>
+                                <span class="fs-16 text-yellow">
+                  <i class="fas fa-star"></i>
+                </span>
+                                <span class="fs-16 text-yellow">
+                  <i class="fas fa-star"></i>
+                </span>
+                                <span class="fs-16 text-yellow">
+                  <i class="fas fa-star"></i>
+                </span>
+                                <span class="fs-16 text-dark-white">
+                  <i class="fas fa-star"></i>
+                </span>
+                                <span class="text-light-black fs-12 rate-data">58 rating</span>
+                            </div>
+                            <div class="product-review">
+                                <div class="restaurent-details-mob">
+                                    <a href="#"> <span class="text-light-black"><i class="fas fa-info-circle"></i></span>
+                                        <span class="text-dark-white">info</span>
+                                    </a>
+                                </div>
+                                <div class="restaurent-details-mob">
+                                    <a href="#"> <span class="text-light-black"><i class="fas fa-info-circle"></i></span>
+                                        <span class="text-dark-white">info</span>
+                                    </a>
+                                </div>
+                                <div class="restaurent-details-mob">
+                                    <a href="#"> <span class="text-light-black"><i class="fas fa-info-circle"></i></span>
+                                        <span class="text-dark-white">info</span>
+                                    </a>
+                                </div>
+                                <div class="restaurent-details-mob">
+                                    <a href="#"> <span class="text-light-black"><i class="fas fa-info-circle"></i></span>
+                                        <span class="text-dark-white">info</span>
+                                    </a>
+                                </div>
+                                <h6 class="text-light-black no-margin">91<span class="fs-14">% Food was good</span></h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="restaurent-logo">
+                        <img src="{% static 'assets/img/logo-4.jpg' %}" class="img-fluid" alt="#">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="restaurent-address u-line">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="address-details">
+                        <div class="address">
+                            <div class="delivery-address"> <a href="##" class="text-light-black">Food will be ready in (45–55m)</a>
+                                <div class="delivery-type"> <span class="text-success fs-12 fw-500">No minimun</span><span class="text-light-white"> visit cafetaria for food</span>
+                                </div>
+                            </div>
+                            <div class="change-address"> <a href="##" class="fw-500">Order Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    
+    <section class="section-padding restaurent-meals bg-light-theme">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3">
+                    <div class="sidebar2">
+                        <div class="advertisement-slider swiper-container h-auto mb-xl-20 mb-md-40">
+                            
+                            <div class="swiper-wrapper">
+                                {% for food in foods %}
+                                <div class="swiper-slide">
+                                    <div class="testimonial-wrapper">
+                                        <div class="testimonial-box">
+                                            <div style="height: 100px;" class="testimonial-img p-relative">
+                                                <a href="##">
+                                                    <img style="object-fit: cover; height: 100%;" src="{{food.imageURL}}" class="img-fluid full-width" alt="testimonial-img">
+                                                </a>
+                                                <div class="overlay">
+                                                    
+                                                    <div class="add-fav text-success">
+                                                        <img src="{% static 'assets/img/svg/013-heart-1.svg' %}" alt="tag">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="testimonial-caption padding-15">
+                                                <p class="text-light-white text-uppercase no-margin fs-12">GH₵ {{food.price}}</p>
+                                                <h5 class="fw-600"><a href="##" class="text-light-black">{{food.name}}</a></h5>
+                                                
+                                                <div class="ratings"> <span class="text-yellow fs-16">
+                                                              <i class="fas fa-star"></i>
+                                                            </span>
+                                                                                    <span class="text-yellow fs-16">
+                                                              <i class="fas fa-star"></i>
+                                                            </span>
+                                                                                    <span class="text-yellow fs-16">
+                                                              <i class="fas fa-star"></i>
+                                                            </span>
+                                                                                    <span class="text-yellow fs-16">
+                                                              <i class="fas fa-star"></i>
+                                                            </span>
+                                                                                    <span class="text-yellow fs-16">
+                                                              <i class="fas fa-star"></i>
+                                                            </span>
+                                                </div>
+                                                <p class="text-light-black">visit uenr cafetaria for order</p>
+                                                <p class="text-light-white fw-100"><strong class="text-light-black fw-700">Due time</strong> {{food.time}}</p>
+                                                <a data-product="{{food.id}}" data-action="add" class="btn-second btn-submit update-cart">Order Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                
+                                <div class="swiper-slide">
+                                    <div class="testimonial-wrapper">
+                                        <div class="testimonial-box">
+                                            <div class="testimonial-img p-relative">
+                                                <a href="##">
+                                                    <img src="{% static 'phama/phan.jpg' %}" class="img-fluid full-width" alt="testimonial-img">
+                                                </a>
+                                                <div class="overlay">
+                                                    <div class="brand-logo">
+                                                        <img src="{% static 'phama/drugn.jpg' %}" class="img-fluid" alt="logo">
+                                                    </div>
+                                                    <div class="add-fav text-success"><img src="{% static 'phama/drugs.webp' %}" alt="tag">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <!-- Add Arrows -->
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                          
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="promocodeimg mb-xl-20 p-relative">
+                                <img src="{% static 'assets/img/banner-2.jpg' %}" class="img-fluid full-width" alt="promocode">
+                                <div class="promocode-text">
+                                    <div class="promocode-text-content">
+                                        <h5 class="text-custom-white mb-2 fw-600">Get GH₵10 off your first order!</h5>
+                                        <p class="text-custom-white no-margin">Spend GH₵15 or more and get GH₵10 off your first delivery order.</p>
+                                    </div>
+                                    <div class="promocode-btn"> <a href="##">Get Cood Deal wi</a>
+                                    </div>
+                                </div>
+                                <div class="overlay overlay-bg"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 restaurent-meal-head mb-md-40">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="section-header-left">
+                                        <h3 class="text-light-black header-title">
+                                            <a class="card-link text-light-black no-margin  after-none" href="#">
+                                Most Popular
+                              </a>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div id="collapseOne" class="collapse show">
+                                    <div class="card-body no-padding">
+                                        <div class="row">
+                                            
+                                            {% for food in  foods %}
+                                            <div class="col-lg-12">
+                                                <div class="restaurent-product-list">
+                                                    <div class="restaurent-product-detail">
+                                                        <div class="restaurent-product-left">
+                                                            <div class="restaurent-product-title-box">
+                                                                <div class="restaurent-product-box">
+                                                                    <div class="restaurent-product-title">
+                                                                        <h6 class="mb-2" data-toggle="modal" data-target="#restaurent-popup"><a href="javascript:void(0)" class="text-light-black fw-600">{{food.name}}</a></h6>
+                                                                        <p class="text-light-white">Due time {{food.time}}</p>
+                                                                    </div>
+                                                                    <div class="restaurent-product-label"> 
+                                                                        <span data-product="{{food.id}}" data-action="add" class="rectangle-tag bg-dark text-custom-white update-cart">Add to Cart</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="restaurent-product-rating">
+                                                                    <div class="ratings"> <span class="text-yellow"><i class="fas fa-star"></i></span>
+                                                                        <span class="text-yellow"><i class="fas fa-star"></i></span>
+                                                                        <span class="text-yellow"><i class="fas fa-star"></i></span>
+                                                                        <span class="text-yellow"><i class="fas fa-star"></i></span>
+                                                                        <span class="text-yellow"><i class="fas fa-star-half-alt"></i></span>
+                                                                    </div>
+                                                                    <div class="rating-text">
+                                                                        <p class="text-light-white fs-12 title">3845 ratings</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="restaurent-product-caption-box"> <span class="text-light-white">{{food.description}}</span>
+                                                            </div>
+                                                            <div class="restaurent-tags-price">
+                                                                <div class="restaurent-tags"> <span class="text-custom-white square-tag">
+                                    <img src="{% static 'assets/img/svg/004-leaf.svg' %}" alt="tag">
+                                  </span>
+                                                                    <span class="text-custom-white square-tag">
+                                    <img src="{% static 'assets/img/svg/006-chili.svg' %}" alt="tag">
+                                  </span>
+                                                                    <span class="text-custom-white square-tag">
+                                    <img src="{% static 'assets/img/svg/005-chef.svg' %}" alt="tag">
+                                  </span>
+                                                                    <span class="text-custom-white square-tag">
+                                    <img src="{% static 'assets/img/svg/008-protein.svg' %}" alt="tag">
+                                  </span>
+                                                                </div> <span class="circle-tag">
+                                  <img src="{% static 'assets/img/svg/013-heart-1.svg' %}" alt="tag">
+                                </span>
+                                                                <div class="restaurent-product-price">
+                                                                    <h6 class="text-success fw-600 no-margin">GH₵ {{food.price}}</h6>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="restaurent-product-img">
+                                                            <img src="{{food.imageURL}}" class="img-fluid" alt="#">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3">
+                    <div class="sidebar sidebar3">
+                        <div class="video-box mb-xl-20">
+                            <div class="video_wrapper video_wrapper_full js-videoWrapper">
+                                <iframe class="videoIframe js-videoIframe" src="{% static 'phama/phan.jpg' %}" data-src="{% static 'phama/phan.jpg' %}" allow="autoplay"></iframe>
+                                <div class="videoPoster js-videoPoster">
+                                    <div class="video-inner">
+                                        <i class="far fa-play-circle"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="discount-box main-box padding-tb-10">
+                                <div class="discount-price padding-10">
+                                    <div class="left-side">
+                                        <h6 class="text-light-black fw-600 no-margin">Watch Now and get 50% discount</h6>
+                                        <p class="text-light-white no-margin">The hung-over foody (2019)</p>
+                                    </div>
+                                    <div class="right-side justify-content-end">
+                                        <div class="dis-text">
+                                            <span class="badge bg-light-green text-custom-white fw-400">Discount</span>
+                                            <h4 class="text-light-black no-margin">50%</h4>
+                                        </div>
+                                        <a href="##">
+                                            <img src="{% static 'phama/phan.jpg' %}" class="img-fluid" alt="logo">
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="cart-detail-box">
+                            <div class="card">
+                                <div class="card-header padding-15 fw-700">Your Order</div>
+                                <div class="card-body no-padding" id="scrollstyle-4">
+                                    
+
+                                    
+                                    {% for food in items %}
+                                    <div class="cat-product-box">
+                                        <div class="cat-product">
+                                            <div class="cat-name">
+                                                <a href="#">
+                                                    <p class="text-light-green fw-700"><span class="text-dark-white">{{food.quantity}}</span> {{food.food.name}}</p> <span class="text-light-white fw-700">{{food.description}}</span>
+                                                </a>
+                                            </div>
+                                            <div class="delete-btn">
+                                                <div href="#" data-product ="{{food.food.id}}" data-action="remove" class="text-dark-white update-cart"> <i data-product ="{{food.food.id}}" data-action="remove" class="far fa-trash-alt update-cart"></i>
+                                                </div>
+                                            </div>
+                                            <div class="price"> <a href="#" class="text-dark-white fw-500">
+                          GH₵ {{food.food.price}}
+                        </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+                                    <div class="item-total">
+                                        <div class="total-price border-0"> <span class="text-dark-white fw-700">subtotal Price:</span>
+                                            <span class="text-dark-white fw-700">GH₵ {{order.get_cart_total}}</span>
+                                        </div>
+                                        <div class="empty-bag padding-15 fw-700"> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer padding-15"> <a href="{% url 'cart' %}" class="btn-first green-btn text-custom-white full-width fw-500">Proceed to Checkout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- restaurent meals -->
+   
+    <!-- footer -->
+    <!-- modal boxes -->
+    <div class="modal fade" id="address-box">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title fw-700">Change Address</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="location-picker">
+                        <input type="text" class="form-control" placeholder="Enter a new address">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="search-box">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="search-box p-relative full-width">
+                        <input type="text" class="form-control" placeholder="Enter Drug name">
+                    </div>
+                </div>
+                <div class="modal-body"></div>
+            </div>
+        </div>
+    </div>
+    <!-- product popup -->
+    <div class="modal fade restaurent-popup" id="restaurent-popup">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <img src="##" class="img-fluid full-width" alt="#">
+                </div>
+                <div class="modal-body">
+                    <div class="name padding-10">
+                        <h3 class="text-light-black fw-700 mb-2">Sausage Egg Muffin - Meal</h3>
+                        <h5 class="text-light-black fw-600 no-margin">GH₵7.40</h5>
+                    </div>
+                    <div class="padding-10">
+                        <p class="text-light-black no-margin">600-770 Cal.</p>
+                    </div>
+                    <div class="u-line">
+                        <div class="product-quantity padding-10"> <span class="text-light-black fw-700 fs-16">Quantity</span>
+                            <div class="input-group quantity">
+                                <div class="input-group-append">
+                                    <button class="minus-btn" type="button" name="button"> <i class="fas fa-minus"></i>
+                  </button>
+                                </div>
+                                <input type="text" class="text-center" name="name" value="1">
+                                <div class="input-group-prepend">
+                                    <button class="plus-btn" type="button" name="button"><i class="fas fa-plus"></i>
+                  </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- sub product -->
+                    <div class="additional-product">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="no-margin">
+                                    <a class="card-link collapsed text-light-black fw-700" data-toggle="collapse" href="#additionalOne">
+                                        <span>Select Breakfast Drink
+                      <span class="text-light-white fw-500 fs-12 padding-tb-10">Select one (Required)</span></span>
+                                    </a>
+                                </h5>
+                            </div>
+                            <div id="additionalOne" class="collapse">
+                                <div class="card-body padding-10">
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="no-margin">
+                                    <a class="card-link collapsed text-light-black fw-700" data-toggle="collapse" href="#additionalTwo">
+                                        <span>Select Breakfast Drink
+                      <span class="text-light-white fw-500 fs-12 padding-tb-10">Select one (Required)</span></span>
+                                    </a>
+                                </h5>
+                            </div>
+                            <div id="additionalTwo" class="collapse">
+                                <div class="card-body padding-10">
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="no-margin">
+                                    <a class="card-link collapsed text-light-black fw-700" data-toggle="collapse" href="#additionalThree">
+                                        <span>Select Breakfast Drink
+                      <span class="text-light-white fw-500 fs-12 padding-tb-10">Select one (Required)</span></span>
+                                    </a>
+                                </h5>
+                            </div>
+                            <div id="additionalThree" class="collapse">
+                                <div class="card-body padding-10">
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="no-margin">
+                                    <a class="card-link collapsed text-light-black fw-700" data-toggle="collapse" href="#additionalFour">
+                                        <span>Select Breakfast Drink
+                      <span class="text-light-white fw-500 fs-12 padding-tb-10">Select one (Required)</span></span>
+                                    </a>
+                                </h5>
+                            </div>
+                            <div id="additionalFour" class="collapse">
+                                <div class="card-body padding-10">
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                    <button class="add-pro">Small Premium Roast Coffee (0 Cal.) <span>+GH₵0.59</span>
+                    <span class="close">+</span>
+                  </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- sub product -->
+                </div>
+                <div class="modal-footer padding-10">
+                    <button class="btn-second btn-submit">Add Bag : GH₵7.40</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+{% endblock content %}
