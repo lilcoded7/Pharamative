@@ -23,7 +23,7 @@ class EmailSender:
         context = {'username':user.username, 'mail_code':user.verify_code}
         message = render_to_string('mails/account_verification.html', context)
         data = {
-            'email_subject':'CAF | FOOD Password Reset Code',
+            'email_subject':'Pharmative Password Reset Code',
             'email_body': message,
             'to_email':user.email
             }
@@ -33,7 +33,7 @@ class EmailSender:
         context = {'username':user.username}
         message = render_to_string('mails/account_verification.html', context)
         data = {
-            'email_subject':'CAF | FOOD Password Reset Code',
+            'email_subject':'Pharmative Password Reset Code',
             'email_body': message,
             'to_email':user.email
             }
@@ -43,7 +43,7 @@ class EmailSender:
         context = {'email':email}
         message = render_to_string('mails/notification.html', context)
         data = {
-            'email_subject':'CAF | FOOD',
+            'email_subject':'Pharmative',
             'email_body': message,
             'to_email':email
             }
@@ -53,7 +53,7 @@ class EmailSender:
         context = {'user':user}
         message = render_to_string('mails/register_mail.html', context)
         data = {
-            'email_subject':'CAF | FOOD',
+            'email_subject':'Pharmative',
             'email_body': message,
             'to_email':user.email
             }
@@ -67,7 +67,7 @@ def send_customer_verify_code(email):
     context = {'username':user.username, 'mail_code':mail_code}
     message = render_to_string('mails/account_verification.html', context)
     data = {
-        'email_subject':'CAF | FOOD Email Verification',
+        'email_subject':'Pharmative Email Verification',
         'email_body': message,
         'to_email':email
         }
